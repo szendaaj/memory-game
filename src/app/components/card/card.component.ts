@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from 'protractor';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,15 +6,24 @@ import { EventEmitter } from 'protractor';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() imgUrl: string;
-  flipped = false;
+  @Input() details: CardDetails;
+  @Output() onFlip = new EventEmitter<CardDetails>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  flip() {
-    this.flipped = !this.flipped;
+  cardClick(details: CardDetails) {
+    if ( !details.disabled ) {
+      this.onFlip.emit(details);
+    }
   }
+}
+
+export interface CardDetails {
+  id: number;
+  imgUrl: string;
+  flipped: boolean;
+  disabled: boolean;
 }

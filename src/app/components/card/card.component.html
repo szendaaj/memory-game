@@ -1,6 +1,3 @@
-<div class="card" [class.flipped]="flipped" (click)="flip()">
-  <div class="front">
-    <img [src]="imgUrl" />
-  </div>
-  <div class="back"></div>
+<div class="card" [class.disabled]="details.disabled" [class.flipped]="details.flipped" (click)="cardClick(details)" fxLayoutAlign="center center">
+  <img class="front" [src]="details.imgUrl" />
 </div>

@@ -1,40 +1,29 @@
 .card {
-  position: relative;
   height: 100px;
   width: 100px;
+  transition: all 200ms;
+  background: #fff;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  border-radius: 4px;
 
-
-  div {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    border-radius: 4px;
-    transition: all 200ms;
-
-    &.back {
-      background: #fff;
-      box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-      border-radius: 4px;
-      opacity: 1;
+    img {
+      max-width: 70%;
+      max-height: 70%;
+      opacity: 0;
+      translate: all 200ms;
     }
 
-    &.front {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        max-width: 70%;
-        max-height: 70%;
-        opacity: 0.8;
-      }
+  &.flipped {
+    img {
+      opacity: 1;
     }
   }
 
-  &.flipped {
-    .back {
-      opacity: 0;
+  &.disabled {
+    background: none;
+    box-shadow: none;
+    img {
+      opacity: 0.5;
     }
   }
 }
